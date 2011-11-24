@@ -18,12 +18,12 @@ function pinyin($str, $ishead = 0, $isdestroy = 1)
     }
     //加到程序中可以static pinyins 
     if (count($pinyins) == 0) {
-        $fp = fopen(__DIR__ .'/pinyin-utf8.dat', 'r');
+        $fp = fopen(__DIR__ .'/dict/pinyin-utf8.dat', 'r');
         while (! feof($fp)) {
             $line = trim(fgets($fp));
             if ($line) {
-                list($chinese, $english) = explode('`', $line);
-                $pinyins[$chinese] = $english;
+                list($chinese, $pinyin) = explode('`', $line);
+                $pinyins[$chinese] = $pinyin;
             }
         }
         fclose($fp);
